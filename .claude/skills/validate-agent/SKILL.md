@@ -33,7 +33,23 @@ Tech Choices to Validate:
 3. [API Z] for [purpose]
 ```
 
-### Step 2: Research Each Choice
+### Step 2: Check Past Precedent (RAG-Judge)
+
+Before web research, check if we've done similar work before:
+
+```bash
+# Query Artifact Index for relevant past work
+uv run python scripts/braintrust_analyze.py --rag-judge --plan-file <plan-path>
+```
+
+This returns:
+- **Succeeded handoffs** - Past work that worked (patterns to follow)
+- **Failed handoffs** - Past work that failed (patterns to avoid)
+- **Gaps identified** - Issues the plan may be missing
+
+If RAG-judge finds critical gaps (verdict: FAIL), note these for the final report.
+
+### Step 3: Research Each Choice (WebSearch)
 
 For each tech choice, use WebSearch to validate:
 
@@ -49,7 +65,7 @@ Check for:
 - Any known deprecations or issues?
 - Security concerns?
 
-### Step 3: Assess Findings
+### Step 4: Assess Findings
 
 For each tech choice, determine:
 - **VALID** - Current best practice, no issues
@@ -58,7 +74,7 @@ For each tech choice, determine:
 - **RISKY** - Security or stability concerns
 - **UNKNOWN** - Couldn't find enough info (note as assumption)
 
-### Step 4: Create Validation Handoff
+### Step 5: Create Validation Handoff
 
 Write your validation to the handoff directory.
 
@@ -75,6 +91,20 @@ plan_file: [path to plan]
 # Plan Validation: [Plan Name]
 
 ## Overall Status: [VALIDATED | NEEDS REVIEW]
+
+## Precedent Check (RAG-Judge)
+
+**Verdict:** [PASS | FAIL]
+
+### Relevant Past Work:
+- [Session/handoff that succeeded with similar approach]
+- [Session/handoff that failed - pattern to avoid]
+
+### Gaps Identified:
+- [Gap 1 from RAG-judge, if any]
+- [Gap 2 from RAG-judge, if any]
+
+(If no relevant precedent: "No similar past work found in Artifact Index")
 
 ## Tech Choices Validated
 

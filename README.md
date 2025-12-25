@@ -178,8 +178,8 @@ Session continuity, token-efficient MCP execution, and agentic workflows for Cla
   ┌──────────────┐           ┌──────────────┐           ┌──────────────┐
   │ plan-agent   │──────────▶│validate-agent│──────────▶│implement_plan│
   │              │           │              │           │              │
-  │ Research     │           │ Check tech   │           │ Orchestrate  │
-  │ Design       │           │ Best practs  │           │ Task agents  │
+  │ Research     │           │ RAG-judge    │           │ Orchestrate  │
+  │ Design       │           │ WebSearch    │           │ Task agents  │
   │ Write plan   │           │ Flag issues  │           │ TDD workflow │
   └──────────────┘           └──────────────┘           └──────────────┘
          │                           │                           │
@@ -301,14 +301,14 @@ This kit responds to natural language triggers. Say certain phrases and Claude a
 | Say This | What Happens |
 |----------|--------------|
 | "create plan", "design", "architect", "greenfield" | Spawns **plan-agent** to create implementation plan |
-| "validate plan", "before implementing", "ready to implement" | Spawns **validate-agent** to check tech choices |
+| "validate plan", "before implementing", "ready to implement" | Spawns **validate-agent** (RAG-judge + WebSearch) |
 | "implement plan", "execute plan", "run the plan" | Spawns **implement_plan** with agent orchestration |
 | "verify implementation", "did it work", "check code" | Runs **validate_plan** to verify against plan |
 
 **The 3-step flow:**
 ```
 1. plan-agent     → Creates plan in thoughts/shared/plans/
-2. validate-agent → Checks tech choices against best practices
+2. validate-agent → RAG-judge (past precedent) + WebSearch (best practices)
 3. implement_plan → Executes with task agents, creates handoffs
 ```
 
