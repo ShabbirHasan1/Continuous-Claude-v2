@@ -1427,3 +1427,8 @@ License-based (no API key, requires purchase):
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=parcadei/Continuous-Claude-v2&type=timeline&legend=top-left)](https://www.star-history.com/#parcadei/Continuous-Claude-v2&type=timeline&legend=top-left)
